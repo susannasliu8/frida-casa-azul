@@ -7,6 +7,7 @@
   --color-azul: #1f6aa5;        /* cobalt — the famous walls */
   --color-azul-deep: #15445f;   /* shadowed courtyard blue */
   --color-amarillo: #f2b705;    /* sun yellow trim */
+  --color-amarillo-deep: #d99a00;
   --color-terracota: #bf4e30;   /* clay pots, brick */
   --color-verde: #5a7d4f;       /* cactus, garden */
   --color-verde-deep: #38502f;
@@ -15,32 +16,23 @@
   --color-hueso-warm: #efe4cf;
   --color-tinta: #2b2118;       /* dark ink, body text */
   --color-sombra: #4a3b2c;      /* warm brown shadow */
+  --color-laton: #c9a45b;       /* brass placard */
 
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "EB Garamond", Georgia, serif;
 }
 
-/* ----------------------------------------------------------------------------
-   Base
-   ------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--color-hueso);
+  background-color: var(--color-azul-deep);
   color: var(--color-tinta);
   font-family: var(--font-body);
-  font-size: 1.18rem;
-  line-height: 1.7;
-  /* warm plaster wash + faint grain */
-  background-image:
-    radial-gradient(120% 80% at 50% -10%, rgba(242, 183, 5, 0.10), transparent 60%),
-    radial-gradient(120% 90% at 100% 100%, rgba(31, 106, 165, 0.07), transparent 55%),
-    var(--plaster, none);
-  background-attachment: fixed;
-  background-size: cover, cover, 260px 260px;
+  font-size: 1.1rem;
+  line-height: 1.65;
 }
 
 h1, h2, h3, .font-display {
@@ -53,121 +45,305 @@ h1, h2, h3, .font-display {
 }
 
 /* ----------------------------------------------------------------------------
-   Scroll-reveal — elements rise gently into view
+   Hero — the exterior of Casa Azul
    ------------------------------------------------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
-  will-change: opacity, transform;
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
 }
-.reveal.in-view {
-  opacity: 1;
-  transform: none;
+.hero__facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 50% at 50% 46%, rgba(8, 30, 48, 0.62), transparent 70%),
+    linear-gradient(to bottom, rgba(8, 30, 48, 0.25), transparent 30%, transparent 70%, rgba(8, 30, 48, 0.35));
+}
+.hero__plate {
+  text-align: center;
+  color: var(--color-hueso);
+  padding: 2rem 1.5rem;
+  max-width: 40rem;
+}
+.hero__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--color-amarillo);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+.hero__title {
+  font-size: clamp(4rem, 15vw, 9.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  margin-top: 0.6rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 4px 26px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.hero__sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.6vw, 1.7rem);
+  margin-top: 0.8rem;
+  color: rgba(246, 239, 225, 0.95);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 183, 5, 0.8);
+  background: rgba(242, 183, 5, 0.14);
+  color: var(--color-amarillo);
+  backdrop-filter: blur(2px);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.hero__cta:hover {
+  background: var(--color-amarillo);
+  color: var(--color-azul-deep);
+  transform: translateY(-2px);
 }
 
 /* ----------------------------------------------------------------------------
-   Flip card — a photo/painting that turns to reveal a story
+   Scroll-reveal
    ------------------------------------------------------------------------- */
-.flip {
-  perspective: 1600px;
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* ----------------------------------------------------------------------------
+   Gallery room — a colored Casa Azul wall the artworks hang on
+   ------------------------------------------------------------------------- */
+.room {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(3.5rem, 8vw, 7rem) 1.5rem clamp(4.5rem, 9vw, 8rem);
+  background-color: var(--wall, var(--color-azul));
+  color: var(--ink, var(--color-hueso));
+  overflow: hidden;
+}
+
+/* plaster texture + soft top light on every wall */
+.room::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    radial-gradient(120% 60% at 50% -10%, rgba(255, 255, 255, 0.16), transparent 60%),
+    var(--plaster, none);
+  background-size: cover, 260px 260px;
+  mix-blend-mode: soft-light;
+  opacity: 0.9;
+}
+
+/* picture rail near the top + skirting board at the floor */
+.room::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(1.5rem, 4vw, 3rem);
+  z-index: -1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.28), transparent);
+}
+
+.room__rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: clamp(2rem, 5vw, 3.5rem);
+  height: 2px;
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.12);
+  z-index: -1;
+}
+
+.placard-room {
+  text-align: center;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  max-width: 46rem;
+}
+.placard-room__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.placard-room__title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-top: 0.5rem;
+}
+.placard-room__intro {
+  margin-top: 0.9rem;
+  font-style: italic;
+  font-size: 1.05rem;
+  opacity: 0.92;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+/* ----------------------------------------------------------------------------
+   A hung, framed artwork that turns to reveal its museum label
+   ------------------------------------------------------------------------- */
+.piece {
+  width: clamp(15rem, 34vw, 21rem);
+  margin: 0;
+}
+
+.frame {
+  perspective: 1700px;
   background: transparent;
   border: 0;
   padding: 0;
   cursor: pointer;
   display: block;
   width: 100%;
-  text-align: left;
   font: inherit;
   color: inherit;
 }
 
-.flip__inner {
+.frame__inner {
   display: block;
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  transition: transform 0.9s cubic-bezier(0.4, 0.1, 0.2, 1);
+  transition: transform 0.95s cubic-bezier(0.4, 0.1, 0.2, 1);
   transform-style: preserve-3d;
 }
+.frame[aria-pressed="true"] .frame__inner { transform: rotateY(180deg); }
 
-.flip[aria-pressed="true"] .flip__inner {
-  transform: rotateY(180deg);
-}
+.frame:hover .frame__inner { transform: translateY(-6px) rotateY(0deg); }
+.frame[aria-pressed="true"]:hover .frame__inner { transform: translateY(-6px) rotateY(180deg); }
 
-.flip__face {
+.frame__face {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 0.35rem;
   overflow: hidden;
+  /* hung on the wall */
+  box-shadow: 0 26px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* gilded frame for paintings / portraits */
+.frame__front {
+  border: 14px solid #b9892f;
+  border-image: linear-gradient(135deg, #f4e3a1, #c79a3a 35%, #8a6412 65%, #f0d98a) 1;
+  background: #efe4cf;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 18px 38px -20px rgba(43, 33, 24, 0.7);
+    0 26px 30px -10px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.35),
+    inset 0 0 14px rgba(0, 0, 0, 0.35);
 }
-
-.flip__front {
-  background: var(--color-hueso-warm);
+/* white-matted dark frame for photographs */
+.piece[data-kind="Photograph"] .frame__front {
+  border: 12px solid #2b2118;
+  border-image: none;
+  background: #fbf7ee;
+  padding: 10px;
 }
+.piece[data-kind="Photograph"] .frame__front img { border: 1px solid rgba(0,0,0,0.15); }
 
-.flip__front img {
+.frame__front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.flip__back {
+/* the museum label on the back */
+.frame__back {
   transform: rotateY(180deg);
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.12), transparent 40%),
-    var(--color-azul);
-  color: var(--color-hueso);
-  padding: 1.6rem 1.5rem;
+    radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,0.6), transparent 55%),
+    #f0e6cf;
+  color: var(--color-tinta);
+  border: 10px solid #b9892f;
+  border-image: linear-gradient(135deg, #f4e3a1, #c79a3a 35%, #8a6412 65%, #f0d98a) 1;
+  padding: 1.4rem 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.9rem;
-  border: 6px solid var(--color-amarillo);
+  gap: 0.7rem;
 }
-
-.flip:hover .flip__front,
-.flip:focus-visible .flip__front {
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 24px 46px -18px rgba(43, 33, 24, 0.8);
+.frame__back-kind {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-terracota);
 }
-
-.flip:focus-visible {
-  outline: 3px solid var(--color-rosa);
-  outline-offset: 6px;
-  border-radius: 0.5rem;
-}
-
-/* a small cue that the card is interactive */
-.flip__hint {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.4rem 1rem 0.7rem;
-  background: linear-gradient(to top, rgba(21, 68, 95, 0.92), transparent);
-  color: var(--color-hueso);
+.frame__back-title {
   font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.98rem;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: var(--color-azul-deep);
+}
+.frame__back-story { font-size: 0.98rem; line-height: 1.55; }
+.frame__back-hint { margin-top: 0.3rem; font-size: 0.74rem; font-style: italic; opacity: 0.6; }
+
+.frame:focus-visible { outline: none; }
+.frame:focus-visible .frame__inner {
+  outline: 3px solid var(--color-rosa);
+  outline-offset: 10px;
+}
+
+/* brass placard beneath the frame — stays put while the art turns */
+.label-brass {
+  margin: 1.1rem auto 0;
+  max-width: 90%;
+  text-align: center;
+  padding: 0.6rem 0.9rem;
+  border-radius: 3px;
+  background: linear-gradient(160deg, #e6cd8e, #b88f3f 55%, #9c7728);
+  color: #2a1f0a;
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.label-brass__name { font-family: var(--font-display); font-size: 0.98rem; line-height: 1.2; }
+.label-brass__meta {
+  margin-top: 0.15rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.35rem;
 }
 
 /* ----------------------------------------------------------------------------
-   Reduced motion — honor user preference
+   Reduced motion
    ------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .flip__inner { transition: transform 0.001s; }
-  body { background-attachment: scroll; }
+  .frame__inner, .frame:hover .frame__inner { transition: transform 0.001s; }
 }

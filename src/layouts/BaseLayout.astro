@@ -57,8 +57,8 @@ const plasterUrl = withBase("/textures/plaster.svg");
         revealables.forEach((el) => io.observe(el));
       }
 
-      // Click / keyboard to turn a card and reveal its story.
-      const cards = document.querySelectorAll<HTMLButtonElement>(".flip");
+      // Click / keyboard to turn a framed work and reveal its museum label.
+      const cards = document.querySelectorAll<HTMLButtonElement>(".frame");
       cards.forEach((card) => {
         card.addEventListener("click", () => {
           const pressed = card.getAttribute("aria-pressed") === "true";

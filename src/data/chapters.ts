@@ -26,8 +26,8 @@ export type Chapter = {
   /** small overline — place and year */
   eyebrow: string;
   title: string;
-  /** the poetic opening passage */
-  lede: string;
+  /** a short, one-line wall caption for the room (kept brief on purpose) */
+  lede?: string;
   /** one of her words, used as a pull-quote (optional) */
   quote?: string;
   cards: Card[];
@@ -47,11 +47,7 @@ export const chapters: Chapter[] = [
     id: "coyoacan",
     eyebrow: "Coyoacán · 1907",
     title: "The Blue House",
-    lede:
-      "She liked to say she was born in 1910, the year the Revolution began — as if she " +
-      "and her country had drawn first breath together. In truth it was 1907, in a house " +
-      "the color of a clear noon sky. The walls were already blue. The girl would spend " +
-      "her whole life arriving back at them.",
+    lede: "Where she was born, and where she would always return.",
     quote: "I paint flowers so they will not die.",
     cards: [
       {
@@ -84,11 +80,7 @@ export const chapters: Chapter[] = [
     id: "accident",
     eyebrow: "Mexico City · 1925",
     title: "The Second Accident",
-    lede:
-      "She was eighteen, riding home on a wooden bus, when a streetcar folded it like paper. " +
-      "A steel handrail ran through her, hip to hip. Survivors said gold dust — a passenger's " +
-      "spilled pigment — settled over her bleeding body, and someone cried, 'la bailarina, la " +
-      "bailarina.' The dancer. She would later call this the first of two great accidents.",
+    lede: "The streetcar that broke her body and made her a painter.",
     quote: "I am not sick. I am broken. But I am happy to be alive as long as I can paint.",
     cards: [
       {
@@ -109,10 +101,7 @@ export const chapters: Chapter[] = [
     id: "mirror",
     eyebrow: "The bed · 1926",
     title: "Painting Herself",
-    lede:
-      "Pinned beneath a canopy mirror, she found the one subject who was always present, " +
-      "always willing, never leaving the room. 'I paint myself,' she said, 'because I am so " +
-      "often alone, and because I am the subject I know best.'",
+    lede: "The one subject who never left the room.",
     cards: [
       {
         img: "/art/painting-mirror.svg",
@@ -142,10 +131,7 @@ export const chapters: Chapter[] = [
     id: "diego",
     eyebrow: "1929",
     title: "Frida and Diego",
-    lede:
-      "He was twenty years older, twice her size, and the most famous muralist in Mexico. " +
-      "They married — the elephant and the dove, her mother sighed. Their love was enormous " +
-      "and ruinous and lifelong: two suns trying to share one sky.",
+    lede: "Two suns trying to share one sky.",
     quote: "There have been two great accidents in my life. One was the streetcar. The other was Diego.",
     cards: [
       {
@@ -165,10 +151,7 @@ export const chapters: Chapter[] = [
     id: "gringolandia",
     eyebrow: "Detroit · 1932",
     title: "Gringolandia",
-    lede:
-      "Diego's commissions carried them north, to a country of smokestacks and skyscrapers she " +
-      "called Gringolandia. She wore Tehuana dresses through Detroit like a flag, and ached, " +
-      "quietly and then not quietly at all, for home.",
+    lede: "North to a country of smokestacks, aching for home.",
     cards: [
       {
         img: "/art/painting-detroit.svg",
@@ -198,10 +181,7 @@ export const chapters: Chapter[] = [
     id: "roots",
     eyebrow: "Mexico · 1930s–40s",
     title: "Roots and Revolution",
-    lede:
-      "Home again, she dressed herself in Mexico: Tehuana skirts, ribboned braids, pre-Columbian " +
-      "jade. It was costume and conviction at once — a daily painting of her own country across " +
-      "her own body, and a politics worn in plain sight.",
+    lede: "She wore her country, and her politics, on her own body.",
     quote: "Feet, what do I need them for if I have wings to fly?",
     cards: [
       {
@@ -232,10 +212,7 @@ export const chapters: Chapter[] = [
     id: "column",
     eyebrow: "1944",
     title: "The Broken Column",
-    lede:
-      "The corsets grew heavier, the surgeries more frequent. She made her broken body the " +
-      "great subject of her art — not to ask for pity, but to look pain in the eye and paint " +
-      "exactly what she saw there.",
+    lede: "She looked pain in the eye and painted what she saw.",
     cards: [
       {
         img: "/art/painting-column.svg",
@@ -254,10 +231,7 @@ export const chapters: Chapter[] = [
     id: "vivalavida",
     eyebrow: "Coyoacán · 1954",
     title: "Viva la Vida",
-    lede:
-      "At her first solo show in Mexico, doctors forbade her to leave bed — so she arrived by " +
-      "ambulance and held court from a four-poster bed wheeled into the gallery, laughing, " +
-      "singing, alive. She died soon after, at home in the Blue House, forty-seven years old.",
+    lede: "Her last word to the world was a blessing.",
     quote: "I hope the exit is joyful — and I hope never to return.",
     cards: [
       {

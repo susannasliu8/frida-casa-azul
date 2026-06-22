@@ -35,11 +35,14 @@ const H = 800;
 function frame(p) {
   return `
     <rect x="0" y="0" width="${W}" height="${H}" fill="${p.bg}"/>
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#topLight)"/>`;
+}
+
+/* a painterly vignette + canvas grain, laid over the finished image */
+function surface() {
+  return `
     <rect x="0" y="0" width="${W}" height="${H}" fill="url(#grain)"/>
-    <rect x="22" y="22" width="${W - 44}" height="${H - 44}" fill="none"
-          stroke="${bone}" stroke-opacity="0.55" stroke-width="3"/>
-    <rect x="32" y="32" width="${W - 64}" height="${H - 64}" fill="none"
-          stroke="${p.deep}" stroke-opacity="0.6" stroke-width="6"/>`;
+    <rect x="0" y="0" width="${W}" height="${H}" fill="url(#vignette)"/>`;
 }
 
 function flower(cx, cy, r, color) {
@@ -140,10 +143,19 @@ function svg(inner) {
     <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/></filter>
     <pattern id="grain" width="${W}" height="${H}" patternUnits="userSpaceOnUse">
-      <rect width="${W}" height="${H}" filter="url(#g)" opacity="0.06"/>
+      <rect width="${W}" height="${H}" filter="url(#g)" opacity="0.08"/>
     </pattern>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="72%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a0f08" stop-opacity="0.42"/>
+    </radialGradient>
+    <linearGradient id="topLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.14"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
   </defs>
   ${inner}
+  ${surface()}
 </svg>`;
 }
 

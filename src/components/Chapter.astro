@@ -8,30 +8,28 @@ interface Props {
 }
 
 const { chapter, index } = Astro.props;
-const reversed = index % 2 === 1;
-const single = chapter.cards.length === 1;
+
+// Each room is painted in one of the Casa Azul interior wall colors.
+const walls: { wall: string; ink: string }[] = [
+  { wall: "#1f6aa5", ink: "#f6efe1" }, // cobalt salon
+  { wall: "#5a7d4f", ink: "#f6efe1" }, // garden green
+  { wall: "#f2b705", ink: "#2b2118" }, // kitchen yellow
+  { wall: "#15445f", ink: "#f6efe1" }, // shadowed blue
+  { wall: "#bf4e30", ink: "#f6efe1" }, // terracotta
+];
+const { wall, ink } = walls[index % walls.length];
 ---
 
-<section id={chapter.id} class="mx-auto max-w-6xl scroll-mt-12 px-6 py-20 sm:py-28">
-  <div class={`grid items-center gap-12 lg:gap-16 ${single ? "lg:grid-cols-[1fr_minmax(0,22rem)]" : "lg:grid-cols-2"}`}>
-    <!-- text column -->
-    <div class={`reveal ${reversed ? "lg:order-2" : ""}`}>
-      <p class="mb-3 text-sm uppercase tracking-[0.3em] text-terracota">{chapter.eyebrow}</p>
-      <h2 class="font-display text-4xl font-bold leading-tight text-azul-deep sm:text-5xl">
-        {chapter.title}
-      </h2>
-      <p class="mt-6 max-w-prose text-lg leading-relaxed text-sombra">{chapter.lede}</p>
+<section id={chapter.id} class="room scroll-mt-0" style={`--wall:${wall};--ink:${ink}`}>
+  <span class="room__rail" aria-hidden="true"></span>
 
-      {chapter.quote && (
-        <blockquote class="mt-8 border-l-4 border-rosa pl-5 font-display text-2xl italic leading-snug text-rosa">
-          “{chapter.quote}”
-        </blockquote>
-      )}
-    </div>
+  <header class="placard-room reveal">
+    <p class="placard-room__eyebrow">{chapter.eyebrow}</p>
+    <h2 class="placard-room__title">{chapter.title}</h2>
+    {chapter.lede && <p class="placard-room__intro">{chapter.lede}</p>}
+  </header>
 
-    <!-- card column -->
-    <div class={`${reversed ? "lg:order-1" : ""} ${single ? "" : "grid gap-8 sm:grid-cols-2"} reveal`}>
-      {chapter.cards.map((card) => <FlipCard card={card} />)}
-    </div>
+  <div class="gallery">
+    {chapter.cards.map((card) => <FlipCard card={card} />)}
   </div>
 </section>

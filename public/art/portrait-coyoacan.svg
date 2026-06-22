@@ -4,17 +4,21 @@
     <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/></filter>
     <pattern id="grain" width="600" height="800" patternUnits="userSpaceOnUse">
-      <rect width="600" height="800" filter="url(#g)" opacity="0.06"/>
+      <rect width="600" height="800" filter="url(#g)" opacity="0.08"/>
     </pattern>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="72%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a0f08" stop-opacity="0.42"/>
+    </radialGradient>
+    <linearGradient id="topLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.14"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
   </defs>
   
     
     <rect x="0" y="0" width="600" height="800" fill="#1f6aa5"/>
-    <rect x="0" y="0" width="600" height="800" fill="url(#grain)"/>
-    <rect x="22" y="22" width="556" height="756" fill="none"
-          stroke="#f6efe1" stroke-opacity="0.55" stroke-width="3"/>
-    <rect x="32" y="32" width="536" height="736" fill="none"
-          stroke="#15445f" stroke-opacity="0.6" stroke-width="6"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#topLight)"/>
     <!-- shoulders / rebozo -->
     <path d="M70 800 C 150 570, 450 570, 530 800 Z"
           fill="#15445f"/>
@@ -65,4 +69,7 @@
     <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
     <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
   </g>
+  
+    <rect x="0" y="0" width="600" height="800" fill="url(#grain)"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#vignette)"/>
 </svg>
