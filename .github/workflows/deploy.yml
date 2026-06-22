@@ -52,6 +52,6 @@ jobs:
 
       - name: Deploy / update / remove PR preview
         if: github.event_name == 'pull_request'
-        uses: rossjrw/pr-preview-action@9ee5f9c30a36a8f0ee54f9a5ac6e63a9d0caad7a # v1.6.1
+        uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe # v1.6.1
         with:
           source-dir: ./dist
