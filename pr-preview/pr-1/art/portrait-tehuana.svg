@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img">
+  <defs>
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/></filter>
+    <pattern id="grain" width="600" height="800" patternUnits="userSpaceOnUse">
+      <rect width="600" height="800" filter="url(#g)" opacity="0.06"/>
+    </pattern>
+  </defs>
+  
+    
+    <rect x="0" y="0" width="600" height="800" fill="#c1357a"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#grain)"/>
+    <rect x="22" y="22" width="556" height="756" fill="none"
+          stroke="#f6efe1" stroke-opacity="0.55" stroke-width="3"/>
+    <rect x="32" y="32" width="536" height="736" fill="none"
+          stroke="#7d2150" stroke-opacity="0.6" stroke-width="6"/>
+    <!-- shoulders / rebozo -->
+    <path d="M70 800 C 150 570, 450 570, 530 800 Z"
+          fill="#7d2150"/>
+    <path d="M150 800 C 210 650, 390 650, 450 800 Z"
+          fill="#c1357a"/>
+    <!-- neck -->
+    <rect x="262" y="430" width="76" height="120" rx="22" fill="#d99f74"/>
+    <!-- hair back -->
+    <ellipse cx="300" cy="320" rx="190" ry="205" fill="#241a17"/>
+    <!-- face -->
+    <ellipse cx="300" cy="330" rx="138" ry="165" fill="#e9b890"/>
+    <ellipse cx="300" cy="345" rx="138" ry="150" fill="#e9b890"/>
+    <!-- cheeks -->
+    <circle cx="222" cy="370" r="26" fill="#d98a86" opacity="0.45"/>
+    <circle cx="378" cy="370" r="26" fill="#d98a86" opacity="0.45"/>
+    <!-- the unibrow -->
+    <path d="M205 300 Q 255 282 300 296 Q 345 282 395 300
+             Q 345 308 300 308 Q 255 308 205 300 Z" fill="#241a17"/>
+    <!-- eyes -->
+    <ellipse cx="248" cy="330" rx="26" ry="17" fill="#fff"/>
+    <ellipse cx="352" cy="330" rx="26" ry="17" fill="#fff"/>
+    <circle cx="250" cy="332" r="9" fill="#241a17"/>
+    <circle cx="354" cy="332" r="9" fill="#241a17"/>
+    <!-- nose -->
+    <path d="M300 330 Q 316 380 300 392 Q 284 392 288 384"
+          fill="none" stroke="#d99f74" stroke-width="5" stroke-linecap="round"/>
+    <!-- lips -->
+    <path d="M258 420 Q 300 408 342 420 Q 300 452 258 420 Z" fill="#a82a4f"/>
+    <path d="M258 420 Q 300 426 342 420" stroke="#6f1832" stroke-width="2.5" fill="none"/>
+    <!-- flower crown -->
+    <g transform="translate(150 230) rotate(-35)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g>
+    <g transform="translate(450 230) rotate(35)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g>
+    <circle cx="210.0" cy="175.0" r="21.0" fill="#bf4e30"/><circle cx="195.0" cy="201.0" r="21.0" fill="#bf4e30"/><circle cx="165.0" cy="201.0" r="21.0" fill="#bf4e30"/><circle cx="150.0" cy="175.0" r="21.0" fill="#bf4e30"/><circle cx="165.0" cy="149.0" r="21.0" fill="#bf4e30"/><circle cx="195.0" cy="149.0" r="21.0" fill="#bf4e30"/><circle cx="180" cy="175" r="18.0" fill="#f2b705"/>
+    <circle cx="284.0" cy="140.0" r="23.8" fill="#c1357a"/><circle cx="267.0" cy="169.4" r="23.8" fill="#c1357a"/><circle cx="233.0" cy="169.4" r="23.8" fill="#c1357a"/><circle cx="216.0" cy="140.0" r="23.8" fill="#c1357a"/><circle cx="233.0" cy="110.6" r="23.8" fill="#c1357a"/><circle cx="267.0" cy="110.6" r="23.8" fill="#c1357a"/><circle cx="250" cy="140" r="20.4" fill="#f2b705"/>
+    <circle cx="360.0" cy="138.0" r="22.4" fill="#e3a008"/><circle cx="344.0" cy="165.7" r="22.4" fill="#e3a008"/><circle cx="312.0" cy="165.7" r="22.4" fill="#e3a008"/><circle cx="296.0" cy="138.0" r="22.4" fill="#e3a008"/><circle cx="312.0" cy="110.3" r="22.4" fill="#e3a008"/><circle cx="344.0" cy="110.3" r="22.4" fill="#e3a008"/><circle cx="328" cy="138" r="19.2" fill="#f2b705"/>
+    <circle cx="440.0" cy="178.0" r="21.0" fill="#c1357a"/><circle cx="425.0" cy="204.0" r="21.0" fill="#c1357a"/><circle cx="395.0" cy="204.0" r="21.0" fill="#c1357a"/><circle cx="380.0" cy="178.0" r="21.0" fill="#c1357a"/><circle cx="395.0" cy="152.0" r="21.0" fill="#c1357a"/><circle cx="425.0" cy="152.0" r="21.0" fill="#c1357a"/><circle cx="410" cy="178" r="18.0" fill="#f2b705"/>
+    <g transform="translate(270 150) rotate(-8)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g>
+    <g transform="translate(370 150) rotate(10)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g>
+</svg>
