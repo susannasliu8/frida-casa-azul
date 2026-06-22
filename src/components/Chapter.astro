@@ -1,0 +1,35 @@
+---
+import type { Chapter } from "../data/chapters";
+import FlipCard from "./FlipCard.astro";
+
+interface Props {
+  chapter: Chapter;
+  index: number;
+}
+
+const { chapter, index } = Astro.props;
+
+// Each room is painted in one of the Casa Azul interior wall colors.
+const walls: { wall: string; ink: string }[] = [
+  { wall: "#1f6aa5", ink: "#f6efe1" }, // cobalt salon
+  { wall: "#5a7d4f", ink: "#f6efe1" }, // garden green
+  { wall: "#f2b705", ink: "#2b2118" }, // kitchen yellow
+  { wall: "#15445f", ink: "#f6efe1" }, // shadowed blue
+  { wall: "#bf4e30", ink: "#f6efe1" }, // terracotta
+];
+const { wall, ink } = walls[index % walls.length];
+---
+
+<section id={chapter.id} class="room scroll-mt-0" style={`--wall:${wall};--ink:${ink}`}>
+  <span class="room__rail" aria-hidden="true"></span>
+
+  <header class="placard-room reveal">
+    <p class="placard-room__eyebrow">{chapter.eyebrow}</p>
+    <h2 class="placard-room__title">{chapter.title}</h2>
+    {chapter.lede && <p class="placard-room__intro">{chapter.lede}</p>}
+  </header>
+
+  <div class="gallery">
+    {chapter.cards.map((card) => <FlipCard card={card} />)}
+  </div>
+</section>

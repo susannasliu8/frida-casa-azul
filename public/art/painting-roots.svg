@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img">
+  <defs>
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/></filter>
+    <pattern id="grain" width="600" height="800" patternUnits="userSpaceOnUse">
+      <rect width="600" height="800" filter="url(#g)" opacity="0.08"/>
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="72%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a0f08" stop-opacity="0.42"/>
+    </radialGradient>
+    <linearGradient id="topLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.14"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  
+    <rect x="0" y="0" width="600" height="800" fill="#5a7d4f"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#topLight)"/>
+      <g transform="translate(120 250) rotate(-30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(180 310) rotate(30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(240 250) rotate(-30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(300 310) rotate(30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(360 250) rotate(-30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(420 310) rotate(30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(480 250) rotate(-30)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g>
+      <g transform="translate(150 540) rotate(25)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(210 600) rotate(-25)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(270 540) rotate(25)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(330 600) rotate(-25)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(390 540) rotate(25)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g><g transform="translate(450 600) rotate(-25)">
+    <path d="M0 0 C 18 -28 18 -58 0 -82 C -18 -58 -18 -28 0 0 Z" fill="#5a7d4f"/>
+    <path d="M0 0 L0 -78" stroke="#38502f" stroke-width="2.5"/>
+  </g>
+      <circle cx="360.0" cy="400.0" r="42.0" fill="#c1357a"/><circle cx="330.0" cy="452.0" r="42.0" fill="#c1357a"/><circle cx="270.0" cy="452.0" r="42.0" fill="#c1357a"/><circle cx="240.0" cy="400.0" r="42.0" fill="#c1357a"/><circle cx="270.0" cy="348.0" r="42.0" fill="#c1357a"/><circle cx="330.0" cy="348.0" r="42.0" fill="#c1357a"/><circle cx="300" cy="400" r="36.0" fill="#f2b705"/>
+  
+    <rect x="0" y="0" width="600" height="800" fill="url(#grain)"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#vignette)"/>
+</svg>

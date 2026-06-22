@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Chapter from "../components/Chapter.astro";
+import Footer from "../components/Footer.astro";
+import { chapters } from "../data/chapters";
+---
+
+<BaseLayout title="Casa Azul · The Life of Frida Kahlo">
+  <Hero />
+
+  <main>
+    {chapters.map((chapter, i) => <Chapter chapter={chapter} index={i} />)}
+  </main>
+
+  <Footer />
+</BaseLayout>

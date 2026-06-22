@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img">
+  <defs>
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/></filter>
+    <pattern id="grain" width="600" height="800" patternUnits="userSpaceOnUse">
+      <rect width="600" height="800" filter="url(#g)" opacity="0.08"/>
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="72%">
+      <stop offset="55%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a0f08" stop-opacity="0.42"/>
+    </radialGradient>
+    <linearGradient id="topLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.14"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  
+    <rect x="0" y="0" width="600" height="800" fill="#1f6aa5"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#topLight)"/>
+      <path d="M300 530
+               C 120 370, 230 230, 300 350
+               C 370 230, 480 370, 300 530 Z"
+            fill="#c1357a"/>
+      <path d="M300 350 L 300 460" stroke="#f6efe1" stroke-width="6" opacity="0.6"/>
+  
+    <rect x="0" y="0" width="600" height="800" fill="url(#grain)"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#vignette)"/>
+</svg>

@@ -1,0 +1,41 @@
+---
+import type { Card } from "../data/chapters";
+import { withBase } from "../lib/url";
+
+interface Props {
+  card: Card;
+}
+
+const { card } = Astro.props;
+---
+
+<figure class="piece reveal" data-kind={card.kind}>
+  <button
+    class="frame"
+    type="button"
+    aria-pressed="false"
+    aria-label={`${card.caption} — turn to read: ${card.storyTitle}`}
+  >
+    <span class="frame__inner">
+      <span class="frame__face frame__front">
+        <img src={withBase(card.img)} alt={card.alt} loading="lazy" decoding="async" width="600" height="800" />
+      </span>
+      <span class="frame__face frame__back">
+        <span class="frame__back-kind">{card.kind}</span>
+        <span class="frame__back-title">{card.storyTitle}</span>
+        <span class="frame__back-story">{card.story}</span>
+        <span class="frame__back-hint">Tap to turn the work back</span>
+      </span>
+    </span>
+  </button>
+  <figcaption class="label-brass">
+    <span class="label-brass__name">{card.caption}</span>
+    <span class="label-brass__meta">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 12a9 9 0 1 0 3-6.7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        <path d="M3 4v4h4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      {card.kind} · Tap to read
+    </span>
+  </figcaption>
+</figure>
