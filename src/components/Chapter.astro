@@ -1,0 +1,37 @@
+---
+import type { Chapter } from "../data/chapters";
+import FlipCard from "./FlipCard.astro";
+
+interface Props {
+  chapter: Chapter;
+  index: number;
+}
+
+const { chapter, index } = Astro.props;
+const reversed = index % 2 === 1;
+const single = chapter.cards.length === 1;
+---
+
+<section id={chapter.id} class="mx-auto max-w-6xl scroll-mt-12 px-6 py-20 sm:py-28">
+  <div class={`grid items-center gap-12 lg:gap-16 ${single ? "lg:grid-cols-[1fr_minmax(0,22rem)]" : "lg:grid-cols-2"}`}>
+    <!-- text column -->
+    <div class={`reveal ${reversed ? "lg:order-2" : ""}`}>
+      <p class="mb-3 text-sm uppercase tracking-[0.3em] text-terracota">{chapter.eyebrow}</p>
+      <h2 class="font-display text-4xl font-bold leading-tight text-azul-deep sm:text-5xl">
+        {chapter.title}
+      </h2>
+      <p class="mt-6 max-w-prose text-lg leading-relaxed text-sombra">{chapter.lede}</p>
+
+      {chapter.quote && (
+        <blockquote class="mt-8 border-l-4 border-rosa pl-5 font-display text-2xl italic leading-snug text-rosa">
+          “{chapter.quote}”
+        </blockquote>
+      )}
+    </div>
+
+    <!-- card column -->
+    <div class={`${reversed ? "lg:order-1" : ""} ${single ? "" : "grid gap-8 sm:grid-cols-2"} reveal`}>
+      {chapter.cards.map((card) => <FlipCard card={card} />)}
+    </div>
+  </div>
+</section>

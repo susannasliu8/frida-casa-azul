@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+   Casa Azul theme — colors and type drawn from Frida Kahlo's Blue House
+   ------------------------------------------------------------------------- */
+@theme {
+  --color-azul: #1f6aa5;        /* cobalt — the famous walls */
+  --color-azul-deep: #15445f;   /* shadowed courtyard blue */
+  --color-amarillo: #f2b705;    /* sun yellow trim */
+  --color-terracota: #bf4e30;   /* clay pots, brick */
+  --color-verde: #5a7d4f;       /* cactus, garden */
+  --color-verde-deep: #38502f;
+  --color-rosa: #c1357a;        /* magenta — her signature ribbon */
+  --color-hueso: #f6efe1;       /* bone / plaster, page base */
+  --color-hueso-warm: #efe4cf;
+  --color-tinta: #2b2118;       /* dark ink, body text */
+  --color-sombra: #4a3b2c;      /* warm brown shadow */
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "EB Garamond", Georgia, serif;
+}
+
+/* ----------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-hueso);
+  color: var(--color-tinta);
+  font-family: var(--font-body);
+  font-size: 1.18rem;
+  line-height: 1.7;
+  /* warm plaster wash + faint grain */
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, rgba(242, 183, 5, 0.10), transparent 60%),
+    radial-gradient(120% 90% at 100% 100%, rgba(31, 106, 165, 0.07), transparent 55%),
+    var(--plaster, none);
+  background-attachment: fixed;
+  background-size: cover, cover, 260px 260px;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-rosa);
+  color: var(--color-hueso);
+}
+
+/* ----------------------------------------------------------------------------
+   Scroll-reveal — elements rise gently into view
+   ------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ----------------------------------------------------------------------------
+   Flip card — a photo/painting that turns to reveal a story
+   ------------------------------------------------------------------------- */
+.flip {
+  perspective: 1600px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.flip__inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  transition: transform 0.9s cubic-bezier(0.4, 0.1, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip[aria-pressed="true"] .flip__inner {
+  transform: rotateY(180deg);
+}
+
+.flip__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 18px 38px -20px rgba(43, 33, 24, 0.7);
+}
+
+.flip__front {
+  background: var(--color-hueso-warm);
+}
+
+.flip__front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.flip__back {
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.12), transparent 40%),
+    var(--color-azul);
+  color: var(--color-hueso);
+  padding: 1.6rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.9rem;
+  border: 6px solid var(--color-amarillo);
+}
+
+.flip:hover .flip__front,
+.flip:focus-visible .flip__front {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 24px 46px -18px rgba(43, 33, 24, 0.8);
+}
+
+.flip:focus-visible {
+  outline: 3px solid var(--color-rosa);
+  outline-offset: 6px;
+  border-radius: 0.5rem;
+}
+
+/* a small cue that the card is interactive */
+.flip__hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.4rem 1rem 0.7rem;
+  background: linear-gradient(to top, rgba(21, 68, 95, 0.92), transparent);
+  color: var(--color-hueso);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.98rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ----------------------------------------------------------------------------
+   Reduced motion — honor user preference
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .flip__inner { transition: transform 0.001s; }
+  body { background-attachment: scroll; }
+}

@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import { withBase } from "../lib/url";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "A walk through the life of Frida Kahlo, inspired by the Casa Azul." } = Astro.props;
+const plasterUrl = withBase("/textures/plaster.svg");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
+    <style is:global set:html={`:root{--plaster:url('${plasterUrl}')}`}></style>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Gentle scroll-reveal, disabled when the user prefers reduced motion.
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const revealables = document.querySelectorAll<HTMLElement>(".reveal");
+      if (prefersReduced || !("IntersectionObserver" in window)) {
+        revealables.forEach((el) => el.classList.add("in-view"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.18 }
+        );
+        revealables.forEach((el) => io.observe(el));
+      }
+
+      // Click / keyboard to turn a card and reveal its story.
+      const cards = document.querySelectorAll<HTMLButtonElement>(".flip");
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const pressed = card.getAttribute("aria-pressed") === "true";
+          card.setAttribute("aria-pressed", String(!pressed));
+        });
+      });
+    </script>
+  </body>
+</html>

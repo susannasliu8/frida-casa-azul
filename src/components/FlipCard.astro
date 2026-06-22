@@ -1,0 +1,36 @@
+---
+import type { Card } from "../data/chapters";
+import { withBase } from "../lib/url";
+
+interface Props {
+  card: Card;
+}
+
+const { card } = Astro.props;
+---
+
+<button
+  class="flip group"
+  type="button"
+  aria-pressed="false"
+  aria-label={`${card.caption} — turn to read: ${card.storyTitle}`}
+>
+  <span class="flip__inner">
+    <span class="flip__face flip__front">
+      <img src={withBase(card.img)} alt={card.alt} loading="lazy" decoding="async" width="600" height="800" />
+      <span class="flip__hint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 12a9 9 0 1 0 3-6.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M3 4v4h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        {card.caption}
+      </span>
+    </span>
+    <span class="flip__face flip__back">
+      <span class="block text-xs uppercase tracking-[0.25em] text-amarillo">{card.kind}</span>
+      <span class="block font-display text-2xl leading-tight">{card.storyTitle}</span>
+      <span class="block text-[1.02rem] leading-relaxed text-hueso/90">{card.story}</span>
+      <span class="mt-1 block text-xs italic text-hueso/60">Click to turn back</span>
+    </span>
+  </span>
+</button>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img">
+  <defs>
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/></filter>
+    <pattern id="grain" width="600" height="800" patternUnits="userSpaceOnUse">
+      <rect width="600" height="800" filter="url(#g)" opacity="0.06"/>
+    </pattern>
+  </defs>
+  
+    <rect x="0" y="0" width="600" height="800" fill="#bf4e30"/>
+    <rect x="0" y="0" width="600" height="800" fill="url(#grain)"/>
+    <rect x="22" y="22" width="556" height="756" fill="none"
+          stroke="#f6efe1" stroke-opacity="0.55" stroke-width="3"/>
+    <rect x="32" y="32" width="536" height="736" fill="none"
+          stroke="#7e2f1c" stroke-opacity="0.6" stroke-width="6"/>
+      <circle cx="300" cy="360" r="120" fill="#e3a008"/>
+      <line x1="430" y1="360" x2="485" y2="360" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="420" y1="410" x2="471" y2="431" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="392" y1="452" x2="431" y2="491" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="350" y1="480" x2="371" y2="531" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="300" y1="490" x2="300" y2="545" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="250" y1="480" x2="229" y2="531" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="208" y1="452" x2="169" y2="491" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="180" y1="410" x2="129" y2="431" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="170" y1="360" x2="115" y2="360" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="180" y1="310" x2="129" y2="289" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="208" y1="268" x2="169" y2="229" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="250" y1="240" x2="229" y2="189" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="300" y1="230" x2="300" y2="175" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="350" y1="240" x2="371" y2="189" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="392" y1="268" x2="431" y2="229" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/><line x1="420" y1="310" x2="471" y2="289" stroke="#f2b705" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="300" cy="360" r="70" fill="#bf4e30"/>
+</svg>

@@ -1,0 +1,42 @@
+---
+import { intro } from "../data/chapters";
+---
+
+<header class="relative overflow-hidden bg-azul text-hueso">
+  <!-- sun glow -->
+  <div class="pointer-events-none absolute -top-40 left-1/2 h-[44rem] w-[44rem] -translate-x-1/2 rounded-full bg-amarillo/25 blur-3xl"></div>
+
+  <div class="relative mx-auto flex min-h-[88vh] max-w-3xl flex-col items-center justify-center px-6 py-24 text-center">
+    <p class="reveal mb-6 text-sm uppercase tracking-[0.4em] text-amarillo">Coyoacán · México</p>
+
+    <h1 class="reveal font-display text-6xl font-black leading-none sm:text-8xl">
+      {intro.title}
+    </h1>
+
+    <p class="reveal mt-6 font-display text-xl italic text-hueso/90 sm:text-2xl">
+      {intro.subtitle}
+    </p>
+
+    <p class="reveal mx-auto mt-8 max-w-xl text-lg text-hueso/85">
+      {intro.blurb}
+    </p>
+
+    <a
+      href="#coyoacan"
+      class="reveal mt-12 inline-flex items-center gap-2 rounded-full border border-amarillo/70 bg-amarillo/10 px-7 py-3 text-amarillo transition hover:bg-amarillo hover:text-azul-deep"
+    >
+      Enter the house
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- decorative bottom border in her colors -->
+  <div class="flex h-3 w-full">
+    <span class="flex-1 bg-amarillo"></span>
+    <span class="flex-1 bg-terracota"></span>
+    <span class="flex-1 bg-verde"></span>
+    <span class="flex-1 bg-rosa"></span>
+  </div>
+</header>
